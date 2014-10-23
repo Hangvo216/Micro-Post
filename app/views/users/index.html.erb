@@ -1,0 +1,18 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<div class='search_form'>
+<p>Search User's name: </p>
+<%= form_tag users_path, :method => 'get', remote: true do %>
+  <p>
+  <%= text_field_tag :search, params[:search], id: 'search_box' %>
+  <%= submit_tag 'Search', :name => nil %>
+ </p>
+<% end %>
+</div>
+
+<ul class="users">
+  <%= will_paginate %>
+  <%= render @users %>
+  <%= will_paginate %>
+</ul>
